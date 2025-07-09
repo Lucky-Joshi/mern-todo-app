@@ -25,9 +25,9 @@ function TaskItem({ task, onToggle, onDelete, onRestore }) {
             Trash
           </button>
         ) : (
-          <button onClick={() => onRestore(task._id)} className="restore"> // Button to restore trashed task
+          <button onClick={() => onRestore(task._id)} className="restore"> 
             Restore
-          </button>
+          </button> // Button to restore trashed task
         )}
       </div>
     </li>
