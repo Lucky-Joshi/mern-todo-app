@@ -43,23 +43,25 @@ function App() {
     );
   };
 
-  const filtered = tasks.filter((task) => {
-    if (filter === "all") return !task.isTrashed;
-    if (filter === "completed") return task.isCompleted && !task.isTrashed;
-    if (filter === "trashed") return task.isTrashed;
-  });
+  const PRIORITY_ORDER = { High: 1, Medium: 2, Low: 3, Lowest: 4 };
+
+  const filtered = tasks
+    .filter((task) => {
+      if (filter === "all") return !task.isTrashed;
+      if (filter === "completed") return task.isCompleted && !task.isTrashed;
+      if (filter === "trashed") return task.isTrashed;
+    })
+    .sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]);
 
   return (
     <div className="app-container">
       <h1>📝 To-Do List</h1>
       <TaskForm onAdd={handleAdd} />
-
       <div className="filters">
         <button className="filter-btn" onClick={() => setFilter("all")}>All</button>
         <button className="filter-btn" onClick={() => setFilter("completed")}>Completed</button>
         <button className="filter-btn" onClick={() => setFilter("trashed")}>Trash</button>
       </div>
-
       <TaskList
         tasks={filtered}
         onToggle={handleUpdate}
