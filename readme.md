@@ -168,12 +168,52 @@ This allows calls like `API.get("/todos")` to hit `http://localhost:5000/api/tod
 └──────────────────────────┘
 ```
 
-This shows the request flow:
+---
 
-* React frontend triggers Axios request
-* Express server receives it and passes it through route/controller
-* Controller uses Mongoose model to access MongoDB
-* Response is returned to frontend and displayed
+## 🔄 Sequence Diagram
+
+```text
+User -> TaskForm.jsx: Enters task & clicks Add
+TaskForm.jsx -> App.jsx: Calls handleAdd()
+App.jsx -> api.js: Sends POST /todos
+api.js -> Express server: POST request
+server -> Routes (todoRoutes.js): Match /todos
+Routes -> Controller (createTodo): Create logic
+Controller -> MongoDB: Save task via Mongoose
+MongoDB --> Controller: Returns saved task
+Controller --> Routes --> Express --> api.js --> App.jsx: Task added to state
+```
+
+---
+
+## 🧩 Component-Level Breakdown
+
+### 🔹 `App.jsx`
+
+* Holds the main state of tasks
+* Handles data fetching, adding, updating, deleting, restoring
+* Passes data down to child components
+
+### 🔹 `TaskForm.jsx`
+
+* Controlled input form
+* Handles new task input and priority selection
+* Sends data to parent `App.jsx` for submission
+
+### 🔹 `TaskList.jsx`
+
+* Accepts tasks as props
+* Maps through each task and renders a `TaskItem`
+
+### 🔹 `TaskItem.jsx`
+
+* Individual task view with title, priority badge, buttons for Done, Delete, Restore
+* Calls relevant functions passed down as props from `App.jsx`
+
+### 🔹 `api.js`
+
+* Centralized Axios client with baseURL set to backend API path
+* Used in all API interactions
 
 ---
 
