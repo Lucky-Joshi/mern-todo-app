@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TodoSchema = new mongoose.Schema({
+const TodoSchema = new mongoose.Schema({ // Schema for Todo items
   title: { type: String, required: true },
   description: String,
   priority: {
@@ -8,9 +8,9 @@ const TodoSchema = new mongoose.Schema({
     enum: ["High", "Medium", "Low", "Lowest"],
     default: "Medium"
   },
-  isCompleted: { type: Boolean, default: false },
+  isCompleted: { type: Boolean, default: false }, 
   isTrashed: { type: Boolean, default: false },
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Todo', TodoSchema);
+module.exports = mongoose.model('Todo', TodoSchema); 
