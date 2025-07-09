@@ -6,6 +6,9 @@ function TaskItem({ task, onToggle, onDelete, onRestore }) {
           {task.title}
         </p>
         {task.description && <p className="task-desc">{task.description}</p>}
+        <p className={`priority ${task.priority.toLowerCase()}`}>
+          {task.priority} Priority
+        </p>
       </div>
 
       <div className="task-buttons">
@@ -17,7 +20,6 @@ function TaskItem({ task, onToggle, onDelete, onRestore }) {
             {task.isCompleted ? "Undo" : "Done"}
           </button>
         )}
-
         {!task.isTrashed ? (
           <button onClick={() => onDelete(task._id)} className="trash">
             Trash
