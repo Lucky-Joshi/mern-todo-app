@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const todoRoutes = require('./routes/todoRoutes');
 
-const app = express(); // Middleware
-app.use(cors()); // Enable CORS for all routes
-app.use(express.json()); // Parse JSON bodies
+const app = express(); 
+app.use(cors()); 
+app.use(express.json()); 
 
 // DB Connection
 mongoose.connect(process.env.MONGO_URI, {
