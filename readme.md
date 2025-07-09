@@ -252,4 +252,4 @@ Frontend runs on `localhost:5173` and talks to backend on `localhost:5000`.
 
 ---
 
-## 👨‍💻 Built with ❤️ by Lucky Joshi
+## 👨‍💻 Built by Lucky Joshi
