@@ -1,4 +1,4 @@
-# 📝 MERN To-Do App — Complete README
+# 📝 MERN To-Do App 
 
 This project is a beautiful, full-featured **To-Do List App** built using the **MERN stack** (MongoDB, Express.js, React.js, Node.js), styled with **CSS3**, and includes advanced features like **task priority**, **trash/restore**, and **filtering**.
 
