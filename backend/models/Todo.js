@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TodoSchema = new mongoose.Schema({ // Schema for Todo items
+const TodoSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: String,
   priority: {

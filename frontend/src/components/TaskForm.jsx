@@ -1,42 +1,42 @@
 import { useState } from "react";
 
-function TaskForm({ onAdd }) { // Form component to add new tasks
+function TaskForm({ onAdd }) { 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [priority, setPriority] = useState("Medium");
 
-  const priorityLevels = ["High", "Medium", "Low", "Lowest"]; // Array of priority levels for tasks
-  const priorityColors = { // Object mapping priority levels to CSS classes
+  const priorityLevels = ["High", "Medium", "Low", "Lowest"]; 
+  const priorityColors = { 
     High: "high",
     Medium: "medium",
     Low: "low",
     Lowest: "lowest",
   };
 
-  const handleSubmit = (e) => { // Function to handle form submission
-    e.preventDefault(); // Prevent default form submission behavior
-    if (!title.trim()) return; // If title is empty, do not submit
-    onAdd({ title, description: desc, priority }); // Call the onAdd function passed as a prop with the new task data
-    setTitle(""); // Reset title input
-    setDesc(""); // Reset description input
-    setPriority("Medium"); // Reset priority to default
+  const handleSubmit = (e) => { 
+    e.preventDefault(); 
+    if (!title.trim()) return; 
+    onAdd({ title, description: desc, priority }); 
+    setTitle(""); 
+    setDesc(""); 
+    setPriority("Medium"); 
   };
 
-  return ( // Render the form with inputs for title, description, and priority
+  return ( 
     <form onSubmit={handleSubmit} className="form-group">
       <input
         className="input"
         type="text"
         placeholder="Task Title"
         value={title}
-        onChange={(e) => setTitle(e.target.value)} // Update title state on input change
+        onChange={(e) => setTitle(e.target.value)} 
       />
       <input
         className="input"
         type="text"
         placeholder="Optional Description"
-        value={desc} // Controlled input for description
-        onChange={(e) => setDesc(e.target.value)} // Update description state on input change
+        value={desc} 
+        onChange={(e) => setDesc(e.target.value)} 
       />
 
       <div className="priority-buttons">
@@ -45,7 +45,7 @@ function TaskForm({ onAdd }) { // Form component to add new tasks
             key={level}
             type="button"
             className={`priority-pill ${priority === level ? "active" : ""} ${priorityColors[level]}`}
-            onClick={() => setPriority(level)} // Set priority state when a button is clicked
+            onClick={() => setPriority(level)} 
           >
             {level} 
           </button>
